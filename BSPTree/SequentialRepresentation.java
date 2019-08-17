@@ -24,7 +24,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 
 	@Override public void setRootNode(T nodeLabel) {
 		++maxLine;
-		tree     = new T [maxLine];
+		tree     = (T[])new Object[maxLine];
 		tree [0] = nodeLabel;
 		rootNode = nodeLabel;
 	}
@@ -48,7 +48,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 			tree [location + 2 + 1] = rightChild;
 		} else {
 			++maxLine;
-			T[] temp = new T [Math.power (2, maxLine) - 1];
+			T[] temp = (T[])new Object [(int)Math.pow (2, maxLine) - 1];
 			for(int i = 0; i != tree.length; ++i) {
 				temp [i] = tree [i];
 			}
@@ -68,7 +68,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 	@Override public boolean findNode(T nodeLabel) {
 		boolean bool = false;
 		for(int i = 0; i != tree.length; ++i) {
-			if(nodeLabel = tree [i]) {
+			if(nodeLabel == tree [i]) {
 				bool = true;
 				i    = tree.length;
 			}
@@ -103,13 +103,19 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 	}
 	// end of findParent
 
-
 	@Override public void printInPreorder(PrintWriter writer) {
-		System.out.println (
-			"cant find a way except doing recursion which cant pull out");
+		System.out.println (depthFirst (0));
 	}
 	// end of printInPreorder
-
+	private String depthFirst(int index) {
+		String result = "";
+		if(index == tree.length) {
+			result += tree[index] == null ? "" : " " + tree[tree.length - 1];
+		} else {
+			result += tree[index] == null ? "" : " " + depthFirst (index * 2) + " " + depthFirst (index * 2 + 1);
+		}
+		return result;
+	}
 
 	@Override public void printInInorder(PrintWriter writer) {
 		System.out.println (
