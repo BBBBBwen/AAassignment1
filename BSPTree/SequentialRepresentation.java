@@ -141,7 +141,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 		String[] str = new String[1];
 		str[0] = "";
 		depthFirstPostOder (0, str);
-		write.println (str[0]);
+		writer.println (str[0]);
 	}
 	// end of printInPostorder
 	private void depthFirstPostOder(int index, String[] str) {
