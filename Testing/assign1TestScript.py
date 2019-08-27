@@ -1,16 +1,16 @@
 #
 # Script to perform automated testing for assignment 1 of AA, semester 2 2019
 #
-# The provided Python script will be the same one used to test your implementation.  
-# We will be testing your code on the core teaching servers (titan, jupiter etc), so please try your code there.  
-# The script first compiles your Java code, runs one of the two implementations then runs a series of test.  
-# Each test consists of sequence of operations to execute, whose results will be saved to file, then compared against 
+# The provided Python script will be the same one used to test your implementation.
+# We will be testing your code on the core teaching servers (titan, jupiter etc), so please try your code there.
+# The script first compiles your Java code, runs one of the two implementations then runs a series of test.
+# Each test consists of sequence of operations to execute, whose results will be saved to file, then compared against
 # the expected output.  If output from the tested implementation is the same as expected (script is tolerant for
 # some formatting differences, but please try to stick to space separated output), then we pass that test.
 # Otherwise, difference will be printed via 'diff' (if in verbose mode, see below).
 #
 # Usage, assuming you are in the directory where the test script " assign1TestScript.py" is located.
-#
+#PYTH
 # > python assign1TestScript.py [-v] [-f input filename] <codeDirectory> <name of implementation to test> <list of input files to test on>
 #
 # options:
@@ -25,14 +25,14 @@
 #        expects your program to be compiled and created in, e.g., Assign1-s1234/TreeTester.class.
 #   name of implementation to test: This is the name of the implementation to test.  The names
 #        should be the same as specified in the script or in TreeTester.java
-#   input files: these are the input files, where each file is a list of commands to execute.  
+#   input files: these are the input files, where each file is a list of commands to execute.
 #        IMPORTANT, the expected output file for the print operation must be in the same directory
 #        as the input files, and the should have the same basename - e.g., if we have input operation
 #        file of "test1.in", then we should have expected file "test1.exp".
 #
 #
 # As an example, I can run the code like this when testing code directory "Assign1-s1234",
-# all my input and expected files are located in a directory called "tests" 
+# all my input and expected files are located in a directory called "tests"
 # and named test1.in and testing for sample implementation:
 #
 # > python assign1TestScript.py -v   Assign1-s1234    sample     tests/test1.in

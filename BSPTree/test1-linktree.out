@@ -1,6 +1,4 @@
 true
 F C
 C F G
-nullA B D E C F G 
-nullD B E A F C G 
-nullD E B F G C A 
+A B D E C F G D B E A F C G D E B F G C A 
