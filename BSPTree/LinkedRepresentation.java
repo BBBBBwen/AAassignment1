@@ -27,6 +27,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public void splitNode(T srcLabel, T leftChild, T rightChild) {
+		rootverification(rootNode);
 		depthFirstSearch(rootNode, srcLabel);
 		if(currentNode != null) {
 			Node<T> leftNode = new Node<T>(leftChild, currentNode);
@@ -49,6 +50,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public boolean findNode(T nodeLabel) {
+		rootverification(rootNode);
 		depthFirstSearch(rootNode, nodeLabel);
 		boolean isFound = currentNode != null;
 		currentNode = null;
@@ -59,6 +61,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 	public String findParent(T nodeLabel) {
 		String current = "";
 		String parent = "";
+		rootverification(rootNode);
 		depthFirstSearch(rootNode, nodeLabel);
 
 		if(currentNode != null) {
@@ -75,6 +78,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 		String current = "";
 		String left = "";
 		String right = "";
+		rootverification(rootNode);
 		depthFirstSearch(rootNode, nodeLabel);
 
 		if(currentNode != null) {
@@ -89,10 +93,12 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public void printInPreorder(PrintWriter writer) {
+		rootverification(rootNode);
 		printInPreorder(rootNode, writer);
 	} // end of printInPreorder
 
 	private void printInPreorder(Node<T> root, PrintWriter writer) {
+		rootverification(root);
 		writer.print(root.value.toString() + " ");
 		if(root.left != null) printInPreorder(root.left, writer);
 		if(root.right != null) printInPreorder(root.right, writer);
@@ -100,10 +106,12 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public void printInInorder(PrintWriter writer) {
+		rootverification(rootNode);
 		printInInorder(rootNode, writer);
 	} // end of printInInorder
 
 	private void printInInorder(Node<T> root, PrintWriter writer) {
+		rootverification(root);
 		if(root.left != null) printInInorder(root.left, writer);
 		writer.print(root.value.toString() + " ");
 		if(root.right != null) printInInorder(root.right, writer);
@@ -111,13 +119,19 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public void printInPostorder(PrintWriter writer) {
+		rootverification(rootNode);
 		printInPostorder(rootNode, writer);
 	} // end of printInPostorder
 
 	private void printInPostorder(Node<T> root, PrintWriter writer) {
+		rootverification(root);
 		if(root.left != null) printInPostorder(root.left, writer);
 		if(root.right != null) printInPostorder(root.right, writer);
 		writer.print(root.value.toString() + " ");
+	}
+
+	private void rootverification(Node<T> root) {
+		if(root == null) throw new IllegalArgumentException("null root node found");
 	}
 }         // end of class LinkedRepresentation
 
