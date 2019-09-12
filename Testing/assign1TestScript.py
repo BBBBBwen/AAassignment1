@@ -41,7 +41,6 @@
 # > python assign1TestScript.py -v -f BSP_combined.txt   Assign1-s1234    sample     tests/test2.in
 #
 #
-#
 # Jeffrey Chan, 2016
 # Phuc Chu, 2018
 #
