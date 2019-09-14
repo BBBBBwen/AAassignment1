@@ -78,7 +78,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 	@Override
 	public String findParent(T nodeLabel) {
 		String current = nodeLabel.toString();
-		String parent = " ";
+		String parent = "No Parent Node Found";
 		for(int i = 1; i < tree.length; ++i) {
 			if(tree[i].equals(nodeLabel)) {
 				parent = i % 2 == 0 ? tree[i / 2].toString() : tree[(i - 1) / 2].toString();
@@ -92,8 +92,8 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 	@Override
 	public String findChildren(T nodeLabel) {
 		String current = nodeLabel.toString();
-		String left = "";
-		String right = "";
+		String left = "No Left Node Found";
+		String right = "No Right Node Found";
 
 		for(int i = 0; i < tree.length; ++i) {
 			if(tree[i].equals(nodeLabel)) {
