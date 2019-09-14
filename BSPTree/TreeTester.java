@@ -24,11 +24,11 @@ public class TreeTester {
 	 * Print help/usage message.
 	 */
 	private static void usage() {
-		String progName = TreeTester.class.getSimpleName ();
-		System.err.println (progName + ": <implementation> [-f <filename to load tree>] [filename to print results]");
-		System.err.printf ("<implementation> = <%s | %s | %s>%n", SEQUENTIAL_TREE, LINKED_TREE, SAMPLE);
-		System.err.println ("If the optional output filename is specified, then non-interactive mode will be used and respective output is written to that file.  Otherwise interactive mode is assumed and output is written to System.out.");
-		System.exit (1);
+		String progName = TreeTester.class.getSimpleName();
+		System.err.println(progName + ": <implementation> [-f <filename to load tree>] [filename to print results]");
+		System.err.printf("<implementation> = <%s | %s | %s>%n", SEQUENTIAL_TREE, LINKED_TREE, SAMPLE);
+		System.err.println("If the optional output filename is specified, then non-interactive mode will be used and respective output is written to that file.  Otherwise interactive mode is assumed and output is written to System.out.");
+		System.exit(1);
 	} // end of usage
 
 	/**
@@ -39,7 +39,7 @@ public class TreeTester {
 	 */
 	private static void verifyTokens(String[] tokens, int expectedNum) {
 		if(tokens.length != expectedNum) {
-			throw new IllegalArgumentException ("incorrect number of tokens.");
+			throw new IllegalArgumentException("incorrect number of tokens.");
 		}
 	}
 
@@ -57,18 +57,18 @@ public class TreeTester {
 		BSPTree<String> tree,
 		PrintWriter writer
 		) throws IOException {
-		String line;
-		int lineNum = 1;
+		String  line;
+		int     lineNum = 1;
 		boolean bQuit = false;
 
 		// continue reading in commands until we either receive the quit signal
 		// or there are no more input commands
-		while(!bQuit && (line = inReader.readLine ()) != null) {
-			String[] tokens = line.split (" ");
+		while(!bQuit && (line = inReader.readLine()) != null) {
+			String[] tokens = line.split(" ");
 
 			// check if there is at least an operation command
 			if(tokens.length < 1) {
-				System.err.println (lineNum + ": not enough tokens.");
+				System.err.println(lineNum + ": not enough tokens.");
 				lineNum++;
 				continue;
 			}
@@ -76,53 +76,53 @@ public class TreeTester {
 			String command = tokens[0];
 			try {
 				// determine which operation to execute
-				switch(command.toUpperCase ()) {
+				switch(command.toUpperCase()) {
 				// set root node
 				case "RN":
-					verifyTokens (tokens, 2);
-					tree.setRootNode (tokens[1]);
+					verifyTokens(tokens, 2);
+					tree.setRootNode(tokens[1]);
 					break;
 				// split node
 				case "SP":
-					verifyTokens (tokens, 4);
-					tree.splitNode (tokens[1], tokens[2], tokens[3]);
+					verifyTokens(tokens, 4);
+					tree.splitNode(tokens[1], tokens[2], tokens[3]);
 					break;
 				// find node
 				case "FN":
-					verifyTokens (tokens, 2);
-					writer.println (tree.findNode (tokens[1]));
+					verifyTokens(tokens, 2);
+					writer.println(tree.findNode(tokens[1]));
 					break;
 				// find parent node
 				case "FP":
-					verifyTokens (tokens, 2);
-					writer.println (tree.findParent (tokens[1]));
+					verifyTokens(tokens, 2);
+					writer.println(tree.findParent(tokens[1]));
 					break;
 				// find children nodes
 				case "FC":
-					verifyTokens (tokens, 2);
-					writer.println (tree.findChildren (tokens[1]));
+					verifyTokens(tokens, 2);
+					writer.println(tree.findChildren(tokens[1]));
 					break;
 				// print all the nodes in the "preorder" traversal
 				case "TP":
-					tree.printInPreorder (writer);
+					tree.printInPreorder(writer);
 					break;
 				// print all the nodes in the "inorder" traversal
 				case "TI":
-					tree.printInInorder (writer);
+					tree.printInInorder(writer);
 					break;
 				// print all the nodes in the "postorder" traversal
 				case "TS":
-					tree.printInPostorder (writer);
+					tree.printInPostorder(writer);
 					break;
 				// quit
 				case "Q":
 					bQuit = true;
 					break;
 				default:
-					System.err.println (lineNum + ": Unknown command.");
+					System.err.println(lineNum + ": Unknown command.");
 				} // end of switch()
 			} catch(IllegalArgumentException e) {
-				System.err.println (lineNum + ": " + e.getMessage ());
+				System.err.println(lineNum + ": " + e.getMessage());
 			}
 			lineNum++;
 		}
@@ -136,10 +136,10 @@ public class TreeTester {
 	 * @throws IOException If there is an exception to do with I/O.
 	 */
 	private static PrintWriter createWriter(String filename) throws IOException {
-		OutputStream out = (filename == null || filename.trim ().isEmpty ())
+		OutputStream out = (filename == null || filename.trim().isEmpty())
 				   ? System.out
-				   : new FileOutputStream (filename);
-		return new PrintWriter (out, true);
+				   : new FileOutputStream(filename);
+		return new PrintWriter(out, true);
 	}
 
 	/**
@@ -147,42 +147,42 @@ public class TreeTester {
 	 */
 	public static void main(String[] args) {
 		// parse command line options
-		String fileOpt = "f";
-		OptionParser parser = new OptionParser (fileOpt + ":");
-		OptionSet options = parser.parse (args);
+		String       fileOpt = "f";
+		OptionParser parser = new OptionParser(fileOpt + ":");
+		OptionSet    options = parser.parse(args);
 
-		String inputFilename = null;
+		String       inputFilename = null;
 		// -f <inputFilename> specifies the file that contains nodes information to construct the initial tree with.
-		if(options.has (fileOpt)) {
-			if(options.hasArgument (fileOpt)) {
-				inputFilename = (String)options.valueOf (fileOpt);
+		if(options.has(fileOpt)) {
+			if(options.hasArgument(fileOpt)) {
+				inputFilename = (String)options.valueOf(fileOpt);
 			} else {
-				System.err.printf ("Missing filename argument for -%s option.\n", fileOpt);
-				usage ();
+				System.err.printf("Missing filename argument for -%s option.\n", fileOpt);
+				usage();
 			}
 		}
 		// non option arguments
-		List<String> remainArgs = options.nonOptionArguments ()
-					  .stream ().map (o->(String)o)
-					  .collect (Collectors.toList ());
+		List<String> remainArgs = options.nonOptionArguments()
+					  .stream().map(o->(String)o)
+					  .collect(Collectors.toList());
 		// check number of non-option command line arguments
 		int maxArgs = 2, minArgs = 1;
-		if(remainArgs.size () > maxArgs || remainArgs.size () < minArgs) {
-			System.err.println ("Incorrect number of arguments.");
-			usage ();
+		if(remainArgs.size() > maxArgs || remainArgs.size() < minArgs) {
+			System.err.println("Incorrect number of arguments.");
+			usage();
 		}
 
 		// parse non-option arguments
-		String implementationType = remainArgs.get (0);
+		String implementationType = remainArgs.get(0);
 
 		String outFilename = null;
 
 		// output files
-		if(remainArgs.size () == maxArgs) {
-			outFilename = remainArgs.get (1);
-			System.out.println ("Non-interactive mode.");
+		if(remainArgs.size() == maxArgs) {
+			outFilename = remainArgs.get(1);
+			System.out.println("Non-interactive mode.");
 		} else {
-			System.out.println ("Interactive mode.");
+			System.out.println("Interactive mode.");
 		}
 
 
@@ -199,55 +199,58 @@ public class TreeTester {
 			tree = new SampleImplementation<>();
 			break;
 		default:
-			System.err.println ("Unknown implementation type.");
-			usage ();
+			System.err.println("Unknown implementation type.");
+			usage();
 			return;
 		}
 
 
 		// if file specified, then load file
-		System.out.println (inputFilename);
+		System.out.println(inputFilename);
 		if(inputFilename != null) {
-			try(BufferedReader reader = new BufferedReader (new FileReader (inputFilename))) {
-				String line;
-				String delimiter = "[ \t,]+";
+			try(BufferedReader reader = new BufferedReader(new FileReader(inputFilename))) {
+				String   line;
+				String   delimiter = "[ \t,]+";
 				String[] tokens;
-				String srcLabel, leftChild, rightChild;
-				boolean hasRoot = false;
-				double start = System.currentTimeMillis ();
-				while((line = reader.readLine ()) != null) {
-					tokens = line.split (delimiter);
+				String   srcLabel, leftChild, rightChild;
+				boolean  hasRoot = false;
+				double   totalTime = 0;
+				double   start = System.currentTimeMillis();
+				while((line = reader.readLine()) != null) {
+					tokens = line.split(delimiter);
 					if(!hasRoot) {
-						verifyTokens (tokens, 1);
-						tree.setRootNode (tokens[0]);
+						verifyTokens(tokens, 1);
+						tree.setRootNode(tokens[0]);
 						hasRoot = true;
 						continue;
 					}
-					verifyTokens (tokens, 3);
+					verifyTokens(tokens, 3);
 					srcLabel = tokens[0];
 					leftChild = tokens[1];
 					rightChild = tokens[2];
-					tree.splitNode (srcLabel, leftChild, rightChild);
+					double start = System.currentTimeMillis();
+					tree.splitNode(srcLabel, leftChild, rightChild);
+					totalTime = System.currentTimeMillis() - start;
 				}
-				System.out.println (System.currentTimeMillis () - start);
+				System.out.println(totalTime / 1000 + " second");
 			} catch(FileNotFoundException ex) {
-				System.err.println ("File " + args[2] + " not found.");
+				System.err.println("File " + args[2] + " not found.");
 			} catch(IOException ex) {
-				System.err.println ("Cannot open file " + args[2]);
+				System.err.println("Cannot open file " + args[2]);
 			} catch(Exception ex) {
-				System.err.println (ex.getMessage ());
+				System.err.println(ex.getMessage());
 			}
 		}
 
 		// construct in and output streams/writers/readers, then process each operation.
-		try(BufferedReader inReader = new BufferedReader (new InputStreamReader (System.in))) {
+		try(BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in))) {
 			// output to writer
-			PrintWriter writer = createWriter (outFilename);
+			PrintWriter writer = createWriter(outFilename);
 			// process the operations
-			processOperations (inReader, tree, writer);
-			writer.close ();
+			processOperations(inReader, tree, writer);
+			writer.close();
 		} catch(IOException e) {
-			System.err.println (e.getMessage ());
+			System.err.println(e.getMessage());
 		}
 	} // end of main()
 }         // end of class TreeTester
