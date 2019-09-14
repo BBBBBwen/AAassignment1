@@ -77,13 +77,11 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public String findParent(T nodeLabel) {
-		String current = " ";
+		String current = nodeLabel.toString();
 		String parent = " ";
-		for(int i = 0; i < tree.length; ++i) {
+		for(int i = 1; i < tree.length; ++i) {
 			if(tree[i].equals(nodeLabel)) {
-				current = nodeLabel.toString();
-				if(tree[i] != rootNode)
-					parent = i % 2 == 0 ? tree[i / 2].toString() : tree[(i - 1) / 2].toString();
+				parent = i % 2 == 0 ? tree[i / 2].toString() : tree[(i - 1) / 2].toString();
 				i = tree.length;
 			}
 		}
@@ -93,16 +91,15 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public String findChildren(T nodeLabel) {
-		String current = " ";
-		String left = " ";
-		String right = " ";
+		String current = nodeLabel.toString();
+		String left = "";
+		String right = "";
 
 		for(int i = 0; i < tree.length; ++i) {
 			if(tree[i].equals(nodeLabel)) {
 				boolean checkLeft = i * 2 + 1 < tree.length && tree[i * 2 + 1] != null;
 				boolean checkRight = i * 2 + 2 < tree.length && tree[i * 2 + 2] != null;
 
-				current = nodeLabel.toString() + " ";
 				left = checkLeft ? tree[i * 2 + 1].toString() : " ";
 				right = checkRight ? tree[i * 2 + 2].toString() : " ";
 				i = tree.length;
