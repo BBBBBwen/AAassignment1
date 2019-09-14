@@ -28,7 +28,7 @@ public class TimeComplexity {
 			long     end = 0;
 			String   lastNode = null;
 			int      count = 0;
-
+			System.out.println("Data Scan From Line 3 to Line " + (stop - 2) + "\n");
 			while((line = reader.readLine()) != null || count < stop) {
 				++count;
 				tokens = line.split(delimiter);
@@ -54,9 +54,9 @@ public class TimeComplexity {
 
 				lastNode = rightChild;
 			}
-			System.out.println("Sequential spilitNode time: " + seqTime + " nanoseconds");
-			System.out.println("LinkedList spilitNode time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("Sequential spilitNode Time: " + seqTime + " nanoseconds");
+			System.out.println("LinkedList spilitNode Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 			PrintWriter writer = new PrintWriter(new FileOutputStream(outFilename), true);
 
 			//findNode
@@ -64,84 +64,84 @@ public class TimeComplexity {
 			seqTree.findNode(lastNode);
 			end = System.nanoTime();
 			seqTime = end - start;
-			System.out.println("Sequential findNode time: " + seqTime + " nanoseconds");
+			System.out.println("Sequential findNode Time: " + seqTime + " nanoseconds");
 
 			start = System.nanoTime();
 			linkTree.findNode(lastNode);
 			end = System.nanoTime();
 			linkTime = end - start;
-			System.out.println("LinkList findNode time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("LinkedList findNode Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 
 			//findParent
 			start = System.nanoTime();
 			seqTree.findParent(lastNode);
 			end = System.nanoTime();
 			seqTime = end - start;
-			System.out.println("Sequential findParent time: " + seqTime + " nanoseconds");
+			System.out.println("Sequential findParent Time: " + seqTime + " nanoseconds");
 
 			start = System.nanoTime();
 			linkTree.findParent(lastNode);
 			end = System.nanoTime();
 			linkTime = end - start;
-			System.out.println("LinkList findParent time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("LinkedList findParent Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 
 			//findChildren
 			start = System.nanoTime();
 			seqTree.findChildren(lastNode);
 			end = System.nanoTime();
 			seqTime = end - start;
-			System.out.println("Sequential findChildren time: " + seqTime + " nanoseconds");
+			System.out.println("Sequential findChildren Time: " + seqTime + " nanoseconds");
 
 			start = System.nanoTime();
 			linkTree.findChildren(lastNode);
 			end = System.nanoTime();
 			linkTime = end - start;
-			System.out.println("LinkList findChildren time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("LinkedList findChildren Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 
 			//Preorder
 			start = System.nanoTime();
 			seqTree.printInPreorder(writer);
 			end = System.nanoTime();
 			seqTime = end - start;
-			System.out.println("Sequential Preorder Traversal time: " + seqTime + " nanoseconds");
+			System.out.println("Sequential Preorder Traversal Time: " + seqTime + " nanoseconds");
 
 			start = System.nanoTime();
 			linkTree.printInPreorder(writer);
 			end = System.nanoTime();
 			linkTime = end - start;
-			System.out.println("LinkList Preorder Traversal time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("LinkedList Preorder Traversal Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 
 			//Inorder
 			start = System.nanoTime();
 			seqTree.printInInorder(writer);
 			end = System.nanoTime();
 			seqTime = end - start;
-			System.out.println("Sequential Inorder Traversal time: " + seqTime + " nanoseconds");
+			System.out.println("Sequential Inorder Traversal Time: " + seqTime + " nanoseconds");
 
 			start = System.nanoTime();
 			linkTree.printInInorder(writer);
 			end = System.nanoTime();
 			linkTime = end - start;
-			System.out.println("LinkList Inorder Traversal time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("LinkedList Inorder Traversal Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 
 			//Postorder
 			start = System.nanoTime();
 			seqTree.printInPostorder(writer);
 			end = System.nanoTime();
 			seqTime = end - start;
-			System.out.println("Sequential Postorder Traversal time: " + seqTime + " nanoseconds");
+			System.out.println("Sequential Postorder Traversal Time: " + seqTime + " nanoseconds");
 
 			start = System.nanoTime();
 			linkTree.printInPostorder(writer);
 			end = System.nanoTime();
 			linkTime = end - start;
-			System.out.println("LinkList Postorder Traversal time: " + linkTime + " nanoseconds");
-			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + "\n");
+			System.out.println("LinkedList Postorder Traversal Time: " + linkTime + " nanoseconds");
+			System.out.println("The difference is: " + Math.abs(seqTime - linkTime) + " nanoseconds\n");
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}

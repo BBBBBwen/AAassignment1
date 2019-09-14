@@ -59,13 +59,12 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public String findParent(T nodeLabel) {
-		String current = "";
-		String parent = "";
+		String current = nodeLabel.toString();
+		String parent = "Parent Not Found";
 		rootverification(rootNode);
 		depthFirstSearch(rootNode, nodeLabel);
 
 		if(currentNode != null) {
-			current = nodeLabel.toString();
 			parent = currentNode.parent != null ? currentNode.parent.value.toString() : " ";
 		}
 
@@ -75,16 +74,15 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
 	@Override
 	public String findChildren(T nodeLabel) {
-		String current = "";
-		String left = "";
-		String right = "";
+		String current = nodeLabel.toString();
+		String left = "Left Node Not Found";
+		String right = "Right Node Not Found";
 		rootverification(rootNode);
 		depthFirstSearch(rootNode, nodeLabel);
 
 		if(currentNode != null) {
-			current = nodeLabel.toString();
-			left = currentNode.left != null ? currentNode.left.value.toString() : " ";
-			right = currentNode.right != null ? currentNode.right.value.toString() : " ";
+			left = currentNode.left != null ? currentNode.left.value.toString() : left;
+			right = currentNode.right != null ? currentNode.right.value.toString() : right;
 		}
 
 		currentNode = null;
