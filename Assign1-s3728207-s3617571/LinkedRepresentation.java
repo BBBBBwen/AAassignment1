@@ -28,7 +28,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 	@Override
 	public void splitNode(T srcLabel, T leftChild, T rightChild) {
 		rootverification(rootNode);
-		depthFirstSearch(rootNode, srcLabel);
+		breadthFirstSearch(rootNode, srcLabel);
 		if(currentNode != null) {
 			Node<T> leftNode = new Node<T>(leftChild, currentNode);
 			Node<T> rightNode = new Node<T>(rightChild, currentNode);
@@ -39,19 +39,19 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 		}
 	} // end of splitNode
 
-	private void depthFirstSearch(Node<T> root, T srcLabel) {
+	private void breadthFirstSearch(Node<T> root, T srcLabel) {
 		if(root.value.toString().equals(srcLabel.toString())) {
 			currentNode = root;
 		} else {
-			if(root.left != null) depthFirstSearch(root.left, srcLabel);
-			if(root.right != null) depthFirstSearch(root.right, srcLabel);
+			if(root.left != null) breadthFirstSearch(root.left, srcLabel);
+			if(root.right != null) breadthFirstSearch(root.right, srcLabel);
 		}
 	}
 
 	@Override
 	public boolean findNode(T nodeLabel) {
 		rootverification(rootNode);
-		depthFirstSearch(rootNode, nodeLabel);
+		breadthFirstSearch(rootNode, nodeLabel);
 		boolean isFound = currentNode != null;
 		currentNode = null;
 		return isFound;
@@ -62,7 +62,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 		String current = nodeLabel.toString();
 		String parent = "Parent Not Found";
 		rootverification(rootNode);
-		depthFirstSearch(rootNode, nodeLabel);
+		breadthFirstSearch(rootNode, nodeLabel);
 
 		if(currentNode != null) {
 			parent = currentNode.parent != null ? currentNode.parent.value.toString() : " ";
@@ -78,7 +78,7 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 		String left = "Left Node Not Found";
 		String right = "Right Node Not Found";
 		rootverification(rootNode);
-		depthFirstSearch(rootNode, nodeLabel);
+		breadthFirstSearch(rootNode, nodeLabel);
 
 		if(currentNode != null) {
 			left = currentNode.left != null ? currentNode.left.value.toString() : left;
