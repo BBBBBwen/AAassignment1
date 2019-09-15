@@ -18,12 +18,12 @@ public class dataGen {
 			PrintWriter writer = new PrintWriter(fileWrite);
 			writer.println(array[0].data);
 			for(int i = 0; i != array.length; ++i) {
-				if(!array[i].check && 2 * i + 2 < array.length) {
+				if(!array[i].check && (2 * i + 2) < array.length) {
 					writer.println(array[i].data + " " + array[2 * i + 1].data + " " + array[2 * i + 2].data);
 					array[i].check = true;
 				}
 			}
-			fileWrite.close();
+			writer.close();
 		} catch(Exception e) {
 			System.out.println(e);
 		}
