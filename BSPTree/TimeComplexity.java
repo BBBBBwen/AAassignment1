@@ -62,103 +62,103 @@ public class TimeComplexity {
 				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
 				System.out.println();
 
-				PrintWriter writer = new PrintWriter(new FileOutputStream(outFilename), true);
-
-				//findNode
-				System.out.printf("%-15s", "findNode:");
-				start = System.nanoTime();
-				seqTree.findNode(lastNode);
-				end = System.nanoTime();
-				seqTime = end - start;
-				System.out.printf("%-15s", seqTime);
-
-				start = System.nanoTime();
-				linkTree.findNode(lastNode);
-				end = System.nanoTime();
-				linkTime = end - start;
-				System.out.printf("%-15s", linkTime);
-				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
-				System.out.println();
+				// PrintWriter writer = new PrintWriter(new FileOutputStream(outFilename), true);
+				//
+				// //findNode
+				// System.out.printf("%-15s", "findNode:");
+				// start = System.nanoTime();
+				// seqTree.findNode(lastNode);
+				// end = System.nanoTime();
+				// seqTime = end - start;
+				// System.out.printf("%-15s", seqTime);
+				//
+				// start = System.nanoTime();
+				// linkTree.findNode(lastNode);
+				// end = System.nanoTime();
+				// linkTime = end - start;
+				// System.out.printf("%-15s", linkTime);
+				// System.out.printf("%-15s", Math.abs(seqTime - linkTime));
+				// System.out.println();
 
 				//findParent
-				System.out.printf("%-15s", "findParent:");
-				start = System.nanoTime();
-				seqTree.findParent(lastNode);
-				end = System.nanoTime();
-				seqTime = end - start;
-				System.out.printf("%-15s", seqTime);
-
-				start = System.nanoTime();
-				linkTree.findParent(lastNode);
-				end = System.nanoTime();
-				linkTime = end - start;
-				System.out.printf("%-15s", linkTime);
-				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
-				System.out.println();
-
-				//findChildren
-				System.out.printf("%-15s", "findChildren:");
-				start = System.nanoTime();
-				seqTree.findChildren(lastNode);
-				end = System.nanoTime();
-				seqTime = end - start;
-				System.out.printf("%-15s", seqTime);
-
-				start = System.nanoTime();
-				linkTree.findChildren(lastNode);
-				end = System.nanoTime();
-				linkTime = end - start;
-				System.out.printf("%-15s", linkTime);
-				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
-				System.out.println();
+				// System.out.printf("%-15s", "findParent:");
+				// start = System.nanoTime();
+				// seqTree.findParent(lastNode);
+				// end = System.nanoTime();
+				// seqTime = end - start;
+				// System.out.printf("%-15s", seqTime);
+				//
+				// start = System.nanoTime();
+				// linkTree.findParent(lastNode);
+				// end = System.nanoTime();
+				// linkTime = end - start;
+				// System.out.printf("%-15s", linkTime);
+				// System.out.printf("%-15s", Math.abs(seqTime - linkTime));
+				// System.out.println();
+				//
+				// //findChildren
+				// System.out.printf("%-15s", "findChildren:");
+				// start = System.nanoTime();
+				// seqTree.findChildren(lastNode);
+				// end = System.nanoTime();
+				// seqTime = end - start;
+				// System.out.printf("%-15s", seqTime);
+				//
+				// start = System.nanoTime();
+				// linkTree.findChildren(lastNode);
+				// end = System.nanoTime();
+				// linkTime = end - start;
+				// System.out.printf("%-15s", linkTime);
+				// System.out.printf("%-15s", Math.abs(seqTime - linkTime));
+				// System.out.println();
 
 				//Preorder
-				System.out.printf("%-15s", "Preorder:");
-				start = System.nanoTime();
-				seqTree.printInPreorder(writer);
-				end = System.nanoTime();
-				seqTime = end - start;
-				System.out.printf("%-15s", seqTime);
-
-				start = System.nanoTime();
-				linkTree.printInPreorder(writer);
-				end = System.nanoTime();
-				linkTime = end - start;
-				System.out.printf("%-15s", linkTime);
-				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
-				System.out.println();
+				// System.out.printf("%-15s", "Preorder:");
+				// start = System.nanoTime();
+				// seqTree.printInPreorder(writer);
+				// end = System.nanoTime();
+				// seqTime = end - start;
+				// System.out.printf("%-15s", seqTime);
+				//
+				// start = System.nanoTime();
+				// linkTree.printInPreorder(writer);
+				// end = System.nanoTime();
+				// linkTime = end - start;
+				// System.out.printf("%-15s", linkTime);
+				// System.out.printf("%-15s", Math.abs(seqTime - linkTime));
+				// System.out.println();
 
 				//Inorder
-				System.out.printf("%-15s", "Inorder:");
-				start = System.nanoTime();
-				seqTree.printInInorder(writer);
-				end = System.nanoTime();
-				seqTime = end - start;
-				System.out.printf("%-15s", seqTime);
-
-				start = System.nanoTime();
-				linkTree.printInInorder(writer);
-				end = System.nanoTime();
-				linkTime = end - start;
-				System.out.printf("%-15s", linkTime);
-				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
-				System.out.println();
+				// System.out.printf("%-15s", "Inorder:");
+				// start = System.nanoTime();
+				// seqTree.printInInorder(writer);
+				// end = System.nanoTime();
+				// seqTime = end - start;
+				// System.out.printf("%-15s", seqTime);
+				//
+				// start = System.nanoTime();
+				// linkTree.printInInorder(writer);
+				// end = System.nanoTime();
+				// linkTime = end - start;
+				// System.out.printf("%-15s", linkTime);
+				// System.out.printf("%-15s", Math.abs(seqTime - linkTime));
+				// System.out.println();
 
 				//Postorder
-				System.out.printf("%-15s", "Postorder:");
-				start = System.nanoTime();
-				seqTree.printInPostorder(writer);
-				end = System.nanoTime();
-				seqTime = end - start;
-				System.out.printf("%-15s", seqTime);
-
-				start = System.nanoTime();
-				linkTree.printInPostorder(writer);
-				end = System.nanoTime();
-				linkTime = end - start;
-				System.out.printf("%-15s", linkTime);
-				System.out.printf("%-15s", Math.abs(seqTime - linkTime));
-				System.out.println();
+				// System.out.printf("%-15s", "Postorder:");
+				// start = System.nanoTime();
+				// seqTree.printInPostorder(writer);
+				// end = System.nanoTime();
+				// seqTime = end - start;
+				// System.out.printf("%-15s", seqTime);
+				//
+				// start = System.nanoTime();
+				// linkTree.printInPostorder(writer);
+				// end = System.nanoTime();
+				// linkTime = end - start;
+				// System.out.printf("%-15s", linkTime);
+				// System.out.printf("%-15s", Math.abs(seqTime - linkTime));
+				// System.out.println();
 				System.out.println();
 			} catch(Exception ex) {
 				System.err.println(ex.getMessage());

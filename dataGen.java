@@ -12,6 +12,9 @@ public class dataGen {
 		Random rand = new Random();
 		for(int i = 0; i != array.length; ++i) {
 			array[i] = new Data(rand.nextInt(9999) + 1);
+			if(array[i] == null) {
+				System.out.println("check");
+			}
 		}
 		try {
 			FileWriter  fileWrite = new FileWriter("data.txt");
