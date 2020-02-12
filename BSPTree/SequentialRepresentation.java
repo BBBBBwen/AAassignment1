@@ -33,6 +33,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 	public void splitNode(T srcLabel, T leftChild, T rightChild) {
 		int location = -1;
 		for(int i = 0; i < tree.length; ++i) {
+			System.err.println(i + " : " + tree.length);
 			if(tree[i].equals(srcLabel)) {
 				location = i;
 				i = tree.length;
